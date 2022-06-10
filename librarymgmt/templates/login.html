@@ -1,0 +1,65 @@
+{% extends 'basic.html' %}
+{% block css %}
+{% load static %}    
+<style>
+    .loginCard{
+        text-align: center;
+    }
+    .labels{
+        font-weight: 800;
+    }
+    
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 loginCard">
+            <h1 id="activity-heading" style="font-size: 50px; 
+            font-family:'Courier New', Courier, monospace; 
+            font-weight: bolder;" >LOGIN</h1>
+        </div>
+
+        <form action="login" method="post">{% csrf_token %}
+            <div class="row justify-content-center my-4">
+                <div class="col-5">
+                    <div class="card mx-auto">
+                        <div class="row justify-content-center my-2">
+                            <div class="col-11">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label labels">EMAIL</label>
+                                    <input type="text" autocomplete="off" class="form-control" id="email" name="email">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label labels">Password</label>
+                                    <input type="password" class="form-control" id="password"
+                                        name="password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <button type="submit" class="btn btn-dark">Sign In</button>
+
+                            </div>
+                        </div>
+                        <div class="row my-1 mx-3 mb-4">
+                            <div class="col-sm-12">
+                                <a href="">Forget your password?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

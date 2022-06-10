@@ -1,0 +1,58 @@
+{% extends 'basic.html' %}
+{% block css %}
+{% load static %}    
+<style>
+h1 {
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+
+@keyframes example {
+  0%   {color:teal; left:0px; top:-250px;}
+  25%  {color:rgb(104, 36, 47); left:0px; top:-250px;}
+  50%  {color:rgb(76, 76, 145); left:0px; top:250px;}
+  75%  {color:rgb(85, 158, 85); left:-80px; top:0px;}
+  100% {color:rgb(195, 56, 56); left:12px; top:0px;} 
+}
+.buttonShow{
+  animation-name: show;
+  animation-delay: 1s;
+  position: relative;
+  animation-duration: 4s;
+  text-align: center;
+  top: 50px;
+
+}
+@keyframes show {
+  0%   {visibility: hidden;}
+  100% {visibility:hidden;} 
+}
+
+
+</style>
+{% endblock %}
+{% block body %}
+  <div class="container-fluid">
+    
+    <div class="row">
+      <div class="col-12">
+        <h1 style="text-align: center; font-size: 70px; margin-top: 250px; color: rgb(195, 220, 58);">Welcome To Library Management</h1>
+      </div>
+    </div>
+    
+    <div class="row justify-content-center buttonShow" >
+      <div class="col-12">
+        <a href="signup"><button type="button" class="btn btn-dark">SignUp</button></a>
+        
+        <a href ="login"><button type="button" class="btn btn-dark">SignIn</button></a> 
+      </div>
+    </div>
+    </div>
+{% endblock %}
+
+
+
+
+

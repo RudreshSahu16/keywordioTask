@@ -1,0 +1,83 @@
+{% extends 'basic.html' %}
+{% block css %}
+{% load static %}    
+<style>
+    .heads-style{
+        color: white;
+    }
+    .logo{
+        font-size: large;
+        color: aqua;
+    }
+    .headercraft{
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 800;
+      color:rgb(117, 59, 17);
+      margin-top: 20px;
+    }
+    
+</style>
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <h4 class="heads-style logo mb-0">Library Management</h4 >
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            </ul>
+            {% if user.is_authenticated %}
+
+<p class="heads-style mb-0">Welcome</p>&nbsp;
+<p class="heads-style mb-0 ml-2">{{user.first_name | title}}</p>&nbsp;
+<a href="logout"> <button type="button" class="btn btn-danger ml-2">LOGOUT</button></a>
+
+{% endif %}
+            
+            </div>
+        </div>
+    </nav>
+    <div class="row justify-content-center my-2">
+        <div class="col-10 text-center">
+          <h1 class="headercraft">ALL BOOKS</h1>
+        </div>
+        <div class="col-2 my-2 text-center">
+            <a href="addbook"><button type="button" class="btn btn-info headercraft ">Add Book</button></a>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-12 my-1">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                      <th scope="col">S.No.</th>
+                      <th scope="col">Book Name</th>
+                      <th scope="col">Author Name</th>
+                      <th scope="col">Publish year</th>
+                      <th scope="col">Zone</th>
+                      <th scope="col">Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for book in books %}
+                    
+                    <tr>
+                      <th scope="row">{{forloop.counter}}</th>
+                      <td>{{book.bookName}}</td>
+                      <td>{{book.bookAuthor}}</td>
+                      <td>{{book.bookYear}}</td>
+                      <td>{{book.bookZone}}</td>
+                      <td><a href="showbook/{{book.bookId}}"><button type="button" class="btn btn-info">Action</button></a></td>
+
+                    </tr>
+                    {% endfor%}
+                  </tbody>
+            </table>
+        </div>
+    </div>
+        
+{% endblock %}

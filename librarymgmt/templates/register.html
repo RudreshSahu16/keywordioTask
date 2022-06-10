@@ -1,0 +1,106 @@
+{% extends 'basic.html' %}
+{% block css %}
+{% load static %}    
+<style>
+    .registrationCard{
+        text-align: center;
+    }
+    .labels{
+        font-weight:800;
+    }
+    
+</style>
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 registrationCard">
+            <h1 id="activity-heading" style="font-size: 50px; 
+            font-family:'Courier New', Courier, monospace; 
+            font-weight: bolder;" >SIGNUP</h1>
+        </div>
+        <form action="signup" method="post">{% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card mx-auto">
+    
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="mb-3 my-2">
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label labels">CONTACT NUMBER</label>
+                                    <input type="text" class="form-control" id="userName" name="userName"
+                                        placeholder="">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label labels">EMAIL</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <div class="mb-2">
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label labels">FIRST NAME</label>
+                                            <input type="text" class="form-control " id="fName" name="firstName">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-2">
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label labels">LAST NAME</label>
+                                            <input type="text" class="form-control " id="lName" name="lastName">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label labels">PASSWORD</label>
+                                    <input type="password" class="form-control " id="password1"
+                                        name="password">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row justify-content-center">
+                            <div class="col-11">
+                                <div class="mb-2">
+                                    <label for="exampleFormControlInput1" class="form-label labels"> CONFIRM
+                                        PASSWORD</label>
+                                    <input type="password" class="form-control" id="password2"
+                                        name="confirmPassword">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-11">
+                                <button type="submit" class="btn btn-dark">SignUp</button>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </form>
+
+    </div>
+    
+  </div>
+{% endblock %}

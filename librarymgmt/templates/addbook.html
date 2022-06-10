@@ -1,0 +1,109 @@
+{% extends 'basic.html' %}
+{% block css %}
+{% load static %}    
+<style>
+    .heads-style{
+        color: white;
+    }
+    .logo{
+        font-size: large;
+        color: aqua;
+    }
+    .labels{
+        font-weight: 800;
+    }
+    #cardborder{
+        border: 3px grey solid;
+        width: 18rem;
+    }
+   
+</style>
+{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <h4 class="heads-style logo mb-0">Library Management</h4 >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </ul>
+        {% if user.is_authenticated %}
+
+        <p class="heads-style mb-0">Welcome</p>&nbsp;
+        <p class="heads-style mb-0 ml-2">{{user.first_name | title}}</p>&nbsp;
+        <a href="logout"> <button type="button" class="btn btn-danger ml-2">LOGOUT</button></a>
+
+        {% endif %}
+        
+        </div>
+    </div>
+</nav>
+  <div class="container-fluid">
+      <div class="row justify-content-center my-4">
+          <div class="col-5">
+              <div class="card mx-auto my-4" id="cardborder">
+                <form action="addbook" method="post">{% csrf_token %}
+                <div class="row justify-content-center my-2">
+                    <div class="col-11">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label labels">Book Name</label>
+                            <input type="text" autocomplete="off" class="form-control" id="bookName" name="bookName">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-11">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1"
+                                class="form-label labels">Author</label>
+                            <input type="text" class="form-control" id="bookAuthor"
+                                name="bookAuthor">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center my-2">
+                    <div class="col-11">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1"
+                                class="form-label labels">Zone</label>
+                            <select name="bookZone"class="form-select">
+                                <option selected>Select Zone</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="ScienceFiction">ScienceFiction</option>
+                                <option value="Novel">Novel</option>
+                                <option value="Non-Fiction">Non-Fiction</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Autobiography">Autobiography</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-11">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1"
+                                class="form-label labels">Published year</label>
+                            <input type="text" class="form-control" id="bookYear"
+                                name="bookYear">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-11 text-center" >
+                        <button type="submit" class="btn btn-dark mb-2" >Add Book</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+      </div>
+        
+      </div>
+  </div>
+{% endblock %}
